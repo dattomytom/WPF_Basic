@@ -1,0 +1,44 @@
+﻿<Window x:Class="ExplainINotifyPropertyChanged.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:ExplainINotifyPropertyChanged"
+        xmlns:model ="clr-namespace:ExplainINotifyPropertyChanged.Models"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="450" Width="800">
+    <Window.Resources>
+        <model:Person x:Key="persion"></model:Person>
+    </Window.Resources>
+    <Grid Width="400" Height="Auto" HorizontalAlignment="Center" VerticalAlignment="Center"
+          DataContext="{Binding Source={StaticResource persion}}">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="40" />
+            <RowDefinition Height="40" />
+            <RowDefinition Height="40" />
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="90" />
+            <ColumnDefinition />
+        </Grid.ColumnDefinitions>
+        <Label Grid.Row="0"
+               Grid.Column="0"
+               Content="First Name" />
+        <Label Grid.Row="1"
+               Grid.Column="0"
+               Content="Last Name" />
+        <Label Grid.Row="2"
+               Grid.Column="0"
+               Content="Full Name" />
+        <TextBox Grid.Row="0"
+               Grid.Column="1"
+               Text="{Binding Path=FirstName , UpdateSourceTrigger=PropertyChanged}" />
+        <TextBox Grid.Row="1"
+               Grid.Column="1"
+                 Text="{Binding Path=LastName, UpdateSourceTrigger=PropertyChanged}" />
+        <TextBox Grid.Row="2"
+               Grid.Column="1"
+                 Text="{Binding Path=FullName, UpdateSourceTrigger=PropertyChanged}" />
+
+    </Grid>
+</Window>
